@@ -31,9 +31,10 @@ USER root
 # Update operating system
 RUN apt-get update && apt-get -y dist-upgrade
 
-# Update Metasploit Framework
-RUN source /usr/local/rvm/scripts/rvm \
-    /opt/msf/msfupdate --git-branch master
+# Update Metasploit Framwork
+COPY update.sh /usr/local/bin/update.sh
+RUN chmod a+xr /usr/local/bin/update.sh ; \
+    /usr/local/bin/update.sh
 
 # Settings and custom scripts folder
 VOLUME /root/.msf4/
