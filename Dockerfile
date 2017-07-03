@@ -38,6 +38,7 @@ RUN chmod a+xr /usr/local/bin/update.sh ; \
 
 # Upload new init script, without update
 COPY init.sh /usr/local/bin/init.sh
+RUN chmod a+xr /usr/local/bin/init.sh
 
 # Settings and custom scripts folder
 VOLUME /root/.msf4/
