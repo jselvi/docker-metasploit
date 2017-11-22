@@ -33,11 +33,13 @@ RUN apt-get update && apt-get -y dist-upgrade
 
 # Update Metasploit Framwork
 COPY update.sh /usr/local/bin/update.sh
+RUN sync
 RUN chmod a+xr /usr/local/bin/update.sh ; \
     /usr/local/bin/update.sh
 
 # Upload new init script, without update
 COPY init.sh /usr/local/bin/init.sh
+RUN sync
 RUN chmod a+xr /usr/local/bin/init.sh
 
 # Settings and custom scripts folder
@@ -45,5 +47,4 @@ VOLUME /root/.msf4/
 VOLUME /tmp/data/
 
 # Starting script (DB + updates)
-CMD sync ; \
-    /usr/local/bin/init.sh
+CMD /usr/local/bin/init.sh
