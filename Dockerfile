@@ -34,8 +34,8 @@ RUN apt-get update && apt-get -y dist-upgrade
 # Update Metasploit Framwork
 COPY update.sh /usr/local/bin/update.sh
 RUN sync
-RUN chmod a+xr /usr/local/bin/update.sh ; \
-    /usr/local/bin/update.sh
+RUN chmod a+xr /usr/local/bin/update.sh
+RUN /usr/local/bin/update.sh
 
 # Upload new init script, without update
 COPY init.sh /usr/local/bin/init.sh
